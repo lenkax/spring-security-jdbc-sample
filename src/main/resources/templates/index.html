@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>首页</title>
+</head>
+<body>
+<div id="main-content" class="container">
+	你好~ <div sec:authentication="name"></div>
+
+	<div><a href="/logout">登出</a></div>
+
+</div>
+</body>
+</html>

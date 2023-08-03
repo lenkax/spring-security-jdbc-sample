@@ -1,0 +1,56 @@
+# 设置根日志记录器的日志级别
+logging:
+  level:
+    ROOT: DEBUG
+
+# 配置Spring MVC属性
+spring:
+  mvc:
+    pathmatch:
+      # 使用Ant风格的模式匹配进行URL映射
+      matching-strategy: ant_path_matcher
+  # 配置Spring Redis属性
+  redis:
+    # 指定要使用的Redis数据库索引
+    database: 8
+    # 指定Redis服务器的主机名或IP地址
+    host: 127.0.0.1
+    # 指定Redis服务器的端口号
+    port: 6379
+    # 指定Redis服务器的密码
+    password: 123456
+  # 指定Spring Boot应用程序的激活的配置
+  profiles:
+    active: dev
+  # 配置Spring Data Source属性
+  datasource:
+    # 指定用于连接数据库的JDBC URL
+    url: jdbc:mysql://127.0.0.1:3306/spring_security_jdbc?serverTimezone=Asia/Shanghai&useSSL=false
+    # 指定数据库的用户名
+    username: root
+    # 指定数据库的密码
+    password: root1234
+
+# 配置MyBatis-Plus属性
+mybatis-plus:
+  configuration:
+    # 启用下划线分隔的列名到驼峰式属性名的自动映射
+    map-underscore-to-camel-case: true
+    # 启用结果映射的完全自动映射行为
+    auto-mapping-behavior: full
+    # 禁用MyBatis的日志实现
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+    # 启用MyBatis查询的缓存
+    cache-enabled: true
+  # 指定映射器XML文件的位置
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+
+# 配置Springfox属性，用于Swagger文档和UI
+springfox:
+  documentation:
+    # 启用Springfox文档生成
+    enabled: true
+    swagger-ui:
+      # 启用Springfox Swagger UI网页界面
+      enabled: true
+

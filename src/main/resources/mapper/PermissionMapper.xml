@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lucky.security.mapper.PermissionMapper">
+
+  <select id="findByRoleIds" resultType="com.lucky.security.domain.model.Permission">
+    select p.* from tb_permission p
+    inner join tb_role_permission rp on rp.permission_id=p.id
+    inner join tb_role r on r.id=rp.role_id and r.deleted=false
+    where p.deleted=false and p.status=1
+    <if test="roleIds!=null and roleIds.size>0">
+      and r.id in
+      <foreach collection="roleIds" item="roleId" open="(" separator="," close=")">
+        #{roleId}
+      </foreach>
+    </if>
+  </select>
+
+</mapper>
